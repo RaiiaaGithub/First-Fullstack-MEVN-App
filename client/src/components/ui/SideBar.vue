@@ -9,16 +9,22 @@
 
     <div class="items">
       <SidebarButton class="active"
-      text="Dashboard" 
-      faIcon="fa-solid fa-chart-simple"
+        text="Dashboard"
+        id="dashboard" 
+        faIcon="fa-solid fa-chart-simple"
+        @click="activateTab"
       />
       <SidebarButton 
-      text="Folha de Obras" 
-      faIcon="fa-regular fa-clipboard"
+        text="Folha de Obras" 
+        id="folha-obras"
+        faIcon="fa-regular fa-clipboard"
+        @click="activateTab"
       />
       <SidebarButton 
-      text="Veiculos" 
-      faIcon="fa-solid fa-truck"
+        text="Veiculos"
+        id="veiculos" 
+        faIcon="fa-solid fa-truck"
+        @click="activateTab"
       />
     </div>
   </div>
@@ -29,7 +35,19 @@ import LogoImage from '../logo/LogoImage.vue';
 import LogoText from '../logo/LogoText.vue';
 import SidebarButton from './buttons/SidebarButton.vue';
 export default {
-  components: { LogoImage, LogoText, SidebarButton }
+  components: { LogoImage, LogoText, SidebarButton },
+  methods: {
+    activateTab(e) {
+      const buttonItems = document.querySelectorAll('.button-box')
+      buttonItems.forEach(button => {
+        button.classList.remove('active')
+      });
+
+      const target = e.currentTarget
+      target.classList.add('active')
+      this.$emit('select:tab', target.id)
+    }
+  }
 }
 </script>
 

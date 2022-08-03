@@ -7,6 +7,7 @@ const cors          = require('cors')
 // Routes Import
 const EmployeeRoute = require('./routes/employee')
 const AuthRoute = require('./routes/auth')
+const FolhaObraRoute = require('./routes/folhaObra')
 
 // DB CONNECTION
 // Mudar a pass e o user
@@ -40,9 +41,5 @@ app.listen(PORT, () => {
 
 // Routes
 app.use('/api/employee', EmployeeRoute)
+app.use('/api/folha-obra', FolhaObraRoute)
 app.use('/api', AuthRoute)
-app.get('/', (req, res) => {
-    res.json({
-        message: 'OLA'
-    })
-})
