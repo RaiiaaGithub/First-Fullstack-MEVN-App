@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <svg width="100%" height="100%" viewBox="150 150 700 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="Artboard2" x="0" y="0" width="1000" height="1000" style="fill:none;"/><path d="M203.684,510.521c-0.123,-3.499 -0.184,-7.003 -0.184,-10.521c0,-163.643 132.857,-296.5 296.5,-296.5c163.643,0 296.5,132.857 296.5,296.5c0,163.643 -132.857,296.5 -296.5,296.5c-96.173,0 -181.713,-45.888 -235.889,-116.93l-60.611,82.93l-0,-252l0.184,0.021Zm296.316,-158.771c81.821,0 148.25,66.429 148.25,148.25c0,81.821 -66.429,148.25 -148.25,148.25c-81.821,0 -148.25,-66.429 -148.25,-148.25c0,-81.821 66.429,-148.25 148.25,-148.25Z" style="fill:#3c6e71;"/></svg>
+  </div>
+</template>
+
+<script>
+  export default {
+    
+  }
+</script>
+
+<style scoped>
+
+</style>

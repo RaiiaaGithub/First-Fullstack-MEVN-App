@@ -50,20 +50,20 @@ const login = (req, res, next) => {
                 if(result) {
                     let token = jwt.sign({name: user.name}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: process.env.ACCESS_TOKEN_EXPIRE_TIME})
                     let refreshToken = jwt.sign({name: user.name}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: process.env.REFRESH_TOKEN_EXPIRE_TIME})
-                    res.json({
-                        message: 'Login Successful!',
+                    res.status(200).json({
+                        message: 'Autenticou-se com sucesso!',
                         token,
-                        refreshToken
+                        refreshToken,
                     })
                 } else [
-                    res.json({
-                        message: 'Password does not match!'
+                    res.status(401).json({
+                        message: 'Password errada!'
                     })
                 ]
             })
         } else {
-            res.json({
-                message: 'No user found!'
+            res.status(401).json({
+                message: 'Utilizador não existe!'
             })
         }
     })

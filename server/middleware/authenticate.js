@@ -15,7 +15,7 @@ const authenticate = (req, res, next) => {
                 message: "Token Expired!"
             })
         } else {
-            res.json({
+            res.status(401).json({
                 message: 'Authentication Failed!'
             })
         }

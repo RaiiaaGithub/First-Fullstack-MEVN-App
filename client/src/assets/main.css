@@ -1,0 +1,57 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* COLORS */
+  --color-primary: #3C6E71;
+  --color-secondary: #284B63;
+  --color-dark: #353535;
+  --color-gray: grey;
+  --color-background: hsl(0, 0%, 98%);
+  --color-light: #D9D9D9;
+  --color-lighter: white;
+
+  /* EVENTS COLORS */
+  --color-success: hsl(120, 70%, 70%);
+  --color-warning: hsl(64, 100%, 88%);
+  --color-danger: hsl(34, 70%, 70%);
+  --color-error: hsl(0, 70%, 70%);
+  --color-info: hsl(199, 70%, 70%);
+
+  --text-color-success: hsl(120, 70%, 20%);
+  --text-color-warning: hsl(46, 100%, 39%);
+  --text-color-danger: hsl(34, 70%, 20%);
+  --text-color-error: hsl(0, 70%, 20%);
+  --text-color-info: hsl(199, 70%, 20%);
+
+  --extra-color-success: darkgreen;
+  --extra-color-warning: gold;
+  --extra-color-danger: darkorange;
+  --extra-color-error: darkred;
+  --extra-color-info: darkblue;  
+
+  --text-color-primary: var(--color-dark);
+  --text-color-secondary: var(--color-lighter);
+
+  /* FONTS */
+  --font-primary: 'Nunito', sans-serif;
+  --font-title: 'Poppins', sans-serif;
+
+  /* BORDER */
+  --border-radius: 5px;
+}
+
+*, *::after, *::before {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+#app {
+  margin: 0;
+}
