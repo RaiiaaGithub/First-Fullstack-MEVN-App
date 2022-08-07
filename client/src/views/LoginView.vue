@@ -12,7 +12,9 @@
       <LogoFull />
     </div>
 
-    <LoginForm @login:error="loginError" />
+    <keep-alive>
+      <LoginForm @login:error="loginError" />
+    </keep-alive>
   </div>
 </template>
 

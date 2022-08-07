@@ -3,17 +3,18 @@ const Schema        = mongoose.Schema
 
 const mongoosePaginate  = require('mongoose-paginate-v2')
 
+// SCHEMAS
+const { veiculoSchema } = require('./Veiculo')
+
 const folhaObraSchema = new Schema({
     veiculo: {
-        type: Schema.Types.ObjectId,
-        ref: 'Veiculo',
+        type: veiculoSchema,
     },
     servico_feito: {
         type: [String],
     },
     materiais: {
-        type: Schema.Types.ObjectId,
-        ref: 'Materiais',
+        type: [String],
     },
     servico_por_fazer: {
         type: [String],

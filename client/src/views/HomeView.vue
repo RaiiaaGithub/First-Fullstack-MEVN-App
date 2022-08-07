@@ -2,14 +2,15 @@
   <div class="main-app">
     <AuthChecker path="employee" />
     <div class="global-wrapper">
-      <SideBar @select:tab="selectTab"/>
+      <SideBar @select:tab="selectTab" />
       <Navbar />
 
-      <TabWrapper>
-        <Tab v-show="selectedTab === tabs[0]">OLA</Tab>
-        <Tab v-show="selectedTab === tabs[1]">Adeus</Tab>
-        <Tab v-show="selectedTab === tabs[2]">Goodbye?</Tab>
-      </TabWrapper>
+      <keep-alive>
+        <TabWrapper>
+          <component :is="currentTab" />
+        </TabWrapper>
+      </keep-alive>
+      
     </div>
   </div>
 </template>
@@ -19,7 +20,10 @@ import AuthChecker from "../components/AuthChecker.vue";
 import SideBar from "../components/ui/SideBar.vue";
 import Navbar from "../components/ui/Navbar.vue";
 import TabWrapper from "../components/ui/TabWrapper.vue";
-import Tab from "../components/ui/Tab.vue";
+import DashboardView from "../views/sections/DashboardView.vue"
+import FolhaDeObraView from "../views/sections/FolhaDeObraView.vue"
+import VeiculoView from "../views/sections/VeiculoView.vue"
+
 
 export default {
   components: {
@@ -27,17 +31,18 @@ export default {
     SideBar,
     Navbar,
     TabWrapper,
-    Tab
+    DashboardView,
+    FolhaDeObraView,
+    VeiculoView,
   },
   data() {
     return {
-      tabs: ['dashboard', 'folha-obras', 'veiculos'],
-      selectedTab: 'dashboard',
+      currentTab: 'DashboardView',
     }
   },
   methods: {
     selectTab(e) {
-      this.selectedTab = e
+      this.currentTab = e
     }
   }
 }

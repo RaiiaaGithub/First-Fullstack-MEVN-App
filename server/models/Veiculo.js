@@ -7,6 +7,8 @@ const veiculoSchema = new Schema({
     matricula: {
         type: String,
         required: true,
+        unique: true,
+        dropdDups: true,
     },
     marca: {
         type: String,
@@ -24,4 +26,4 @@ const veiculoSchema = new Schema({
 veiculoSchema.plugin(mongoosePaginate)
 
 const Veiculo = mongoose.model('Veiculo', veiculoSchema)
-module.exports = Veiculo
+module.exports = { Veiculo, veiculoSchema }

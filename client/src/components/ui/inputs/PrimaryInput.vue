@@ -1,11 +1,15 @@
 <template>
-  <div>
-      <input 
+  <div class="input">
+      <input
+        ref="myInput"
         :placeholder="holder" 
         v-bind="$attrs"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
       >
+      <div class="icon" v-if="icon">
+        <font-awesome-icon :icon="faIcon"/>
+      </div>
   </div>
 </template>
 
@@ -19,12 +23,39 @@
       modelValue: {
         type: [String, Number],
         default: '',
+      },
+      faIcon: {
+        type: String,
+        default: '',
+      },
+    },
+    data() {
+      return { icon: this.faIcon }
+    },
+    mounted() {
+      if (this.faIcon) {
+        const input = this.$refs.myInput
+        input.style.padding = '.5em 1em .5em 2em'
       }
     }
   }
 </script>
 
 <style scoped>
+  .input {
+    position: relative;
+  }
+
+  .icon {
+    position: absolute;
+    top: 9px;
+    left: .5rem;
+    color: var(--color-dark);
+  }
+  input:focus + .icon {
+    color: var(--color-primary);
+  }
+
   input {
     font-size: 1rem;
     padding: 0.5em 1em;

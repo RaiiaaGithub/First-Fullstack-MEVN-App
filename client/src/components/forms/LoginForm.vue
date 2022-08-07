@@ -12,14 +12,12 @@
           holder="Email ou telemóvel"
           type="email"
           v-model="email"
-          modelValue=""
         />
 
         <PrimaryInput 
           holder="Palavra-passe"
           type="password"
           v-model="password"
-          modelValue=""
         />
 
         <div class="spacer"></div>

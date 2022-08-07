@@ -50,4 +50,8 @@ export default {
 .active {
   background-color: var(--color-primary);
 }
+
+.icon {
+  width: 1.5rem;
+}
 </style>

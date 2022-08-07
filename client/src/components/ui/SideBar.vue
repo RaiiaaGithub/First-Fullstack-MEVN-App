@@ -10,19 +10,19 @@
     <div class="items">
       <SidebarButton class="active"
         text="Dashboard"
-        id="dashboard" 
+        data-component="DashboardView"
         faIcon="fa-solid fa-chart-simple"
         @click="activateTab"
       />
       <SidebarButton 
         text="Folha de Obras" 
-        id="folha-obras"
+        data-component="FolhaDeObraView"
         faIcon="fa-regular fa-clipboard"
         @click="activateTab"
       />
       <SidebarButton 
         text="Veiculos"
-        id="veiculos" 
+        data-component="VeiculoView" 
         faIcon="fa-solid fa-truck"
         @click="activateTab"
       />
@@ -45,7 +45,7 @@ export default {
 
       const target = e.currentTarget
       target.classList.add('active')
-      this.$emit('select:tab', target.id)
+      this.$emit('select:tab', target.getAttribute('data-component'))
     }
   }
 }
@@ -54,9 +54,10 @@ export default {
 <style scoped>
 
 .sidebar-wrapper {
-  width: 100%;
+  width: 300px;
   height: 100vh;
   grid-area: sidebar;
+  position: fixed;
   background-color: var(--color-dark);
   outline: 1px solid var(--color-light);
 
@@ -87,7 +88,7 @@ export default {
 }
 
 .divider {
-  height: 2px;
+  height: 1px;
   width: 100%;
 
   background-color: var(--color-light);

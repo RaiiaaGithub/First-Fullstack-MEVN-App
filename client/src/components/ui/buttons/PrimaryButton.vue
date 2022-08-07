@@ -1,6 +1,13 @@
 <template>
   <div class="button-component">
-    <button>{{ text }}</button>
+    <button>
+      <div class="icon" v-if="faIcon">
+        <font-awesome-icon  :icon="faIcon" />
+      </div>
+      <div v-if="text">
+        {{ text }}
+      </div>
+    </button>
   </div>
 </template>
 
@@ -8,6 +15,10 @@
 export default {
   props: {
     text: String,
+    faIcon: {
+      type: String,
+      default: '',
+    }
   }
 }
 </script>
@@ -27,6 +38,10 @@ button {
   transition: 100ms;
 
   width: 100%;
+
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
 }
 
 button:hover {

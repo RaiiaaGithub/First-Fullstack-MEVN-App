@@ -13,12 +13,6 @@ export default {
         refreshToken: localStorage.getItem('refreshToken')
       })
 
-      const access = await axios.get('http://localhost:3000/api/' + this.path, {
-        headers: {
-          'Authorization': 'Raia ' + response.data.token
-        }
-      })
-
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('refreshToken', response.data.refreshToken)
 

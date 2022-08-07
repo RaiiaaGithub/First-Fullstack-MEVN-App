@@ -1,6 +1,6 @@
 <template>
-  <div class="tab-content">
-    <slot />
+  <div>
+    Veiculo
   </div>
 </template>
 
@@ -11,7 +11,5 @@
 </script>
 
 <style scoped>
-  .tab-content {
-    width: 100%;
-  }
+
 </style>

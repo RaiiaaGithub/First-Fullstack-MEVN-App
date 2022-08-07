@@ -1,13 +1,9 @@
-const FolhaObra = require("../models/FolhaObra");
 const { Veiculo } = require("../models/Veiculo");
 
 //Show list
 const index = (req, res, next) => {
 	if (req.query.page) {
-		FolhaObra.paginate(
-			{},
-			{ page: req.query.page, limit: req.query.limit || 10 }
-		)
+		Veiculo.paginate({}, { page: req.query.page, limit: req.query.limit || 10 })
 			.then((data) => {
 				res.status(200).json({
 					data,
@@ -19,7 +15,7 @@ const index = (req, res, next) => {
 				});
 			});
 	} else {
-		FolhaObra.find()
+		Veiculo.find()
 			.then((data) => {
 				res.status(200).json({
 					data,
@@ -35,8 +31,8 @@ const index = (req, res, next) => {
 
 //Show one
 const show = (req, res, next) => {
-	let _id = req.body._id;
-	FolhaObra.findById(_id)
+	let matricula = req.body.veiculo;
+	Veiculo.findOne({matricula: matricula})
 		.then((data) => {
 			res.status(200).json({
 				data,
@@ -50,26 +46,14 @@ const show = (req, res, next) => {
 };
 
 //Add
-const add = async (req, res, next) => {
-	let veiculo;
-	try {
-		veiculo = await Veiculo.findOne({ matricula: req.body.veiculo });
-		console.log(veiculo)
-	} catch (error) {
-		res.status(400).json({
-			message: "Ocurreu um erro!" + error,
-		});
-	}
-
-	let folhaObra = new FolhaObra({
-		veiculo: veiculo,
-		servico_feito: req.body.servico_feito,
-		materiais: req.body.materiais,
-		servico_por_fazer: req.body.servico_por_fazer,
-		kms: req.body.kms,
-		data: req.body.data,
+const add = (req, res, next) => {
+	let veiculo = new Veiculo({
+		matricula: req.body.matricula,
+		marca: req.body.marca,
+		modelo: req.body.modelo,
+		cor: req.body.cor,
 	});
-	folhaObra
+	veiculo
 		.save()
 		.then((data) => {
 			res.status(200).json({
@@ -85,11 +69,11 @@ const add = async (req, res, next) => {
 
 //Update
 const update = async (req, res, next) => {
-	let folhaID = req.body.folhaID;
+	let matricula = req.body.veiculo;
 
 	let veiculo;
 	try {
-		veiculo = await Veiculo.findOne({ matricula: req.body.veiculo });
+		veiculo = await Veiculo.findOne({ matricula: matricula });
 	} catch (error) {
 		res.status(400).json({
 			message: "Ocurreu um erro!" + error,
@@ -105,10 +89,10 @@ const update = async (req, res, next) => {
 		data: req.body.data,
 	};
 
-	FolhaObra.findByIdAndUpdate(folhaID, { $set: updatedData })
+	Veiculo.findOneAndUpdate({ matricula: veiculo }, { $set: updatedData })
 		.then(() => {
 			res.json({
-				message: "Folha editada com sucesso!",
+				message: "Veiculo editada com sucesso!",
 			});
 		})
 		.catch((error) => {
@@ -120,11 +104,11 @@ const update = async (req, res, next) => {
 
 //Delete
 const destroy = (req, res, next) => {
-	let folhaID = req.body.folhaID;
-	FolhaObra.findByIdAndRemove(folhaID)
+	let matricula = req.body.veiculo;
+	FolhaObra.findOneAndRemove({ matricula: matricula })
 		.then(() => {
 			res.json({
-				message: "Folha apagada com sucesso!",
+				message: "Veiculo apagada com sucesso!",
 			});
 		})
 		.catch((error) => {
